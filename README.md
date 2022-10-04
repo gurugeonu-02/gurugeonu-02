@@ -1,7 +1,9 @@
-### About me
 ![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=240&section=header&text=Gurugeonu&fontSize=36&animation=fadeIn&fontAlignY=36)
 
+### About me
+- Gurugeonu-02
 - Gurugeonu's alt
+- 보평고등학교 1학년
 
 <!--
 **gurugeonu-02/gurugeonu-02** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
