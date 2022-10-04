@@ -61,6 +61,7 @@
                 for (let i = 0; i < maxPredictions; i++) { // and class labels
                     labelContainer.appendChild(document.createElement("div"));
                 }
+                labelContainer.appendChild(document.createElement("div"));
             }
 
             async function loop() {
@@ -72,12 +73,19 @@
             // run the webcam image through the image model
             async function predict() {
                 // predict can take in an image, video or canvas html element
+                let tar = "none";
+                let mn = 0;
                 const prediction = await model.predict(webcam.canvas);
                 for (let i = 0; i < maxPredictions; i++) {
                     const classPrediction =
                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                    if (mn < prediction[i].probability.toFixed(2)) {
+                        mn = prediction[i].probability.toFixed(2);
+                        tar = prediction[i].className;
+                    }
                     labelContainer.childNodes[i].innerHTML = classPrediction;
                 }
+                labelContainer/childNodes[maxPredictions].innerHTML = tar;
             }
         </script>
 
