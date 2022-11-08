@@ -12,6 +12,7 @@ for i in range(1000, 25904):
     soup = bs(page.text, "html.parser")
     val = soup.find_all('td')
     ret = [val[1], val[2], val[3], val[4]]
+    if val[1] < 300: continue;
     ret.insert(0, i)
     solvedac_tier_tar = soup.find_all('td')
     solved_ac_tier = solvedac_tier_tar[2]
@@ -20,4 +21,4 @@ for i in range(1000, 25904):
     li.append(val)
     # 번호, 티어, 제출 수, 정답 수, 정답자 수, 정답 비율
 
-li = sorted(li, key = lambda x: (x[1], -x[5], -x[2]))
+
