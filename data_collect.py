@@ -4,13 +4,20 @@ import pandas as pd
 
 filename = "datas.csv"
 
+li = []
+
 for i in range(1000, 25904):
     page = requests.get("https://www.acmicpc.net/problem/"+str(i))
     if page.status_code != 200: continue;
     soup = bs(page.text, "html.parser")
     val = soup.find_all('td')
-    val[2]# 제출
-    val[3]# 정답
-    val[4]# 맞힌 사람
-    val[5]# 정답 비율
-    #012345 => X X 제출 정답 맞힌사람 정답비율
+    ret = [val[1], val[2], val[3], val[4]]
+    ret.insert(0, i)
+    solvedac_tier_tar = soup.find_all('td')
+    solved_ac_tier = solvedac_tier_tar[2]
+    solved_ac_tier = solved_ac_tier[43:-4]
+    ret.insert(1, solved_ac_tier)
+    li.append(val)
+    # 번호, 티어, 제출 수, 정답 수, 정답자 수, 정답 비율
+
+li = sorted(li, key = lambda x: (x[1], -x[5], -x[2]))
